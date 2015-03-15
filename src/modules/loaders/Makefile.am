@@ -7,6 +7,9 @@ AM_CPPFLAGS          = -I. \
 
 pkgdir               = $(libdir)/imlib2/loaders
 
+if BUILD_X11
+X_BASED_L            = ico.la ani.la
+endif
 if BUILD_XCF_LOADER
 XCF_L                = xcf.la
 endif
@@ -41,14 +44,13 @@ $(ZLIB_L) \
 $(BZ2_L) \
 $(ID3_L) \
 $(XCF_L) \
+$(X_BASED_L) \
 pnm.la \
 argb.la \
 bmp.la \
 xpm.la \
 tga.la \
-lbm.la \
-ico.la \
-ani.la
+lbm.la
 
 EXTRA_DIST = loader_common.h
 
