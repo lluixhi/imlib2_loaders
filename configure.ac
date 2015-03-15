@@ -111,7 +111,11 @@ AC_ARG_WITH([xcf],
   [ xcf_loader=auto ]
 )
 AC_MSG_RESULT($xcf_loader)
-xcf_ok="yes"
+if test "$xcf_loader" != no ; then
+    xcf_ok="yes"
+else
+    xcf_ok="no"
+fi
 AM_CONDITIONAL(BUILD_XCF_LOADER, test "$xcf_ok" = yes)
 
 
