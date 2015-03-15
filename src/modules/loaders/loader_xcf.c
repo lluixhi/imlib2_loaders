@@ -46,10 +46,7 @@
 
 */
 
-
-#ifdef HAVE_CONFIG_H
-#  include <config.h>
-#endif
+#include "loader_common.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -57,8 +54,6 @@
 #include <netinet/in.h>
 #include <X11/Xlib.h>
 
-#include "common.h"
-#include "image.h"
 #include "color_values.h"
 
 /* #define XCF_DBG */
@@ -273,10 +268,6 @@ struct _GimpImage
 _image;
 
 /* ------------------------------------------------------------------------- prototypes ------------ */
-
-char load(ImlibImage *im, ImlibProgressFunction progress,char progress_granularity, char immediate_load);
-char save(ImlibImage *im, ImlibProgressFunction progress, char progress_granularity);
-void formats(ImlibLoader *l);
 
 /* stuff that was adapted from xcf.c */
 

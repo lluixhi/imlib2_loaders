@@ -22,18 +22,13 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 */
+#include "loader_common.h"
 
-#ifdef HAVE_CONFIG_H
-#  include <config.h>
-#endif
-
-#include "common.h"
 #include <stdio.h>
 #include <string.h>
 #include <X11/Xlib.h>
 #include <X11/extensions/XShm.h>
 #include <X11/Xutil.h>
-#include "image.h"
 #include "color_values.h"
 
 /* #define ANI_DBG */
@@ -83,11 +78,6 @@ typedef struct _MsAni
 } MsAni;
 
 static void        ani_cleanup (MsAni *ani);
-
-char load(ImlibImage *im, ImlibProgressFunction progress,char progress_granularity, char immediate_load);
-char save(ImlibImage *im, ImlibProgressFunction progress, char progress_granularity);
-void formats(ImlibLoader *l);
-
 
 static int
 ani_read_int8 (FILE     *fp,

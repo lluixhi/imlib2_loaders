@@ -18,17 +18,13 @@
 
 */
 
-#ifdef HAVE_CONFIG_H
-#  include <config.h>
-#endif
+#include "loader_common.h"
 
 #include <stdio.h>
 #include <math.h>
 #include <X11/Xlib.h>
 #include <netinet/in.h>
 
-#include "common.h"
-#include "image.h"
 #include "color_values.h"
 
 #ifdef XCF_DBG
@@ -51,8 +47,6 @@
 
 #define EPS 0.00001
 #define PI  3.141592654
-#define MAX(a, b) ((a) > (b) ? (a) : (b))
-#define MIN(a, b) ((a) < (b) ? (a) : (b))
 #define INT_MULT(a,b,t)  ((t) = (a) * (b) + 0x80, ((((t) >> 8) + (t)) >> 8))
 #define LINEAR(x,y,w) ((w*y + x)*4)
 

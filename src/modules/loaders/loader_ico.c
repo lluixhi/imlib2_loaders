@@ -22,17 +22,13 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 */
+#include "loader_common.h"
 
-#ifdef HAVE_CONFIG_H
-#  include <config.h>
-#endif
 
-#include "common.h"
 #include <string.h>
 #include <X11/Xlib.h>
 #include <X11/extensions/XShm.h>
 #include <X11/Xutil.h>
-#include "image.h"
 #include "color_values.h"
 
 /* #define ICO_DBG */
@@ -119,10 +115,6 @@ static void       ico_read_entry(MsIcon *ico, MsIconEntry* entry);
 static void       ico_read_data(MsIcon *ico, int icon_num);
 static void       ico_load (MsIcon *ico);
 static int        ico_to_imlib (MsIcon *ico, ImlibImage *im);
-
-char load(ImlibImage *im, ImlibProgressFunction progress,char progress_granularity, char immediate_load);
-char save(ImlibImage *im, ImlibProgressFunction progress, char progress_granularity);
-void formats(ImlibLoader *l);
 
 
 static int
