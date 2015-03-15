@@ -80,6 +80,23 @@ dnl Set PACKAGE_SOURCE_DIR in config.h.
 packagesrcdir=`cd $srcdir && pwd`
 AC_DEFINE_UNQUOTED(PACKAGE_SOURCE_DIR, "${packagesrcdir}", [Source code directory])
 
+AC_PATH_X
+AC_PATH_XTRA
+
+if test "x$have_x" = "xno"; then
+   # If --without-x was passed, this will be "disabled" instead of "no" --
+   # so always treat "no" as an error
+   AC_MSG_ERROR(
+[no X support found.  Use --x-includes and --x-libraries to specify the X
+path on your system, or --without-x to disable X support.])
+fi
+
+if test "x$have_x" = "xyes"; then
+  AC_DEFINE(BUILD_X11, 1, [enabling X11 support])
+else
+  have_x="no"
+fi
+AM_CONDITIONAL(BUILD_X11, test "x$have_x" = "xyes")
 
 AC_MSG_CHECKING(whether to enable xcf support)
 AC_ARG_WITH([xcf],
@@ -424,4 +441,5 @@ echo "  ZLIB....................: $zlib_ok"
 echo "  BZIP2...................: $bz2_ok"
 echo "  ID3.....................: $id3_ok"
 echo "  XCF.....................: $xcf_ok"
+echo "  X.......................: $have_x"
 echo
