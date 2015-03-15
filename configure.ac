@@ -81,13 +81,21 @@ packagesrcdir=`cd $srcdir && pwd`
 AC_DEFINE_UNQUOTED(PACKAGE_SOURCE_DIR, "${packagesrcdir}", [Source code directory])
 
 
-AC_ARG_ENABLE(xcf,
-[  --disable-xcf           disable building the xcf loader],
-[
- if test x$enableval = xno; then
-   xcf_ok=no;
- fi
-])
+AC_MSG_CHECKING(whether to enable xcf support)
+AC_ARG_WITH([xcf],
+  [AS_HELP_STRING([--without-xcf], [Disable XCF image loader])],
+  [
+   if test "$withval" = no ; then
+     xcf_loader=no
+   else
+     xcf_loader=yes
+   fi
+  ],
+  [ xcf_loader=auto ]
+)
+AC_MSG_RESULT($xcf_loader)
+xcf_ok="yes"
+AM_CONDITIONAL(BUILD_XCF_LOADER, test "$xcf_ok" = yes)
 
 
 AC_MSG_CHECKING(whether to enable png support)
@@ -381,8 +389,6 @@ AC_ARG_WITH(imlib2-config, [  --with-imlib2-config=IMLIB2_CONFIG    use imlib2-c
 my_includes=`$IMLIB2_CONFIG --cflags`
 
 AC_SUBST(my_includes)
-
-AM_CONDITIONAL(BUILD_XCF_LOADER, test x$xcf_ok != xno)
 
 AC_CONFIG_FILES([
 Makefile
