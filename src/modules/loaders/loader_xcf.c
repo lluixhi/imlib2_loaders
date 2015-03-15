@@ -47,14 +47,10 @@
 */
 
 #include "loader_common.h"
+#include "color_values.h"
 
-#include <stdio.h>
-#include <string.h>
 #include <sys/types.h>
 #include <netinet/in.h>
-#include <X11/Xlib.h>
-
-#include "color_values.h"
 
 /* #define XCF_DBG */
 

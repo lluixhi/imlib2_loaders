@@ -13,7 +13,7 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/mman.h>
-#include "blend.h"
+#include "color_values.h"
 
 /* flip an inverted image - see RLE reading below */
 static void         tgaflip(DATA32 * in, int w, int h);

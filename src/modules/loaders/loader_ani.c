@@ -23,13 +23,10 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 */
 #include "loader_common.h"
+#include "color_values.h"
 
-#include <stdio.h>
-#include <string.h>
-#include <X11/Xlib.h>
 #include <X11/extensions/XShm.h>
 #include <X11/Xutil.h>
-#include "color_values.h"
 
 /* #define ANI_DBG */
 

@@ -19,13 +19,9 @@
 */
 
 #include "loader_common.h"
-
-#include <stdio.h>
-#include <math.h>
-#include <X11/Xlib.h>
-#include <netinet/in.h>
-
 #include "color_values.h"
+
+#include <netinet/in.h>
 
 #ifdef XCF_DBG
 #define D(s) \
