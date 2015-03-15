@@ -81,17 +81,6 @@ packagesrcdir=`cd $srcdir && pwd`
 AC_DEFINE_UNQUOTED(PACKAGE_SOURCE_DIR, "${packagesrcdir}", [Source code directory])
 
 
-eet=auto
-AC_ARG_ENABLE(eet,
-[  --disable-eet           disable building the eet loader],
-[
- if test x$enableval = xno; then
-   eet=no
- else
-   eet=yes
- fi
-])
-
 AC_ARG_ENABLE(xcf,
 [  --disable-xcf           disable building the xcf loader],
 [
@@ -110,24 +99,8 @@ AC_ARG_WITH(imlib2-config, [  --with-imlib2-config=IMLIB2_CONFIG    use imlib2-c
 ])
 my_includes=`$IMLIB2_CONFIG --cflags`
 
-
-found_eet=no
-if test "x$eet" != "xno" ; then
-        PKG_CHECK_MODULES(EET, eet, found_eet=yes, found_eet=no)
-fi
-if test "x$eet$found_eet" = "xyesno" ; then
-	AC_MSG_ERROR(Eet support was requested but not found)
-elif test "x$found_eet" = "xno" ; then
-	eet=no
-	EET_CFLAGS=""
-	EET_LIBS=""
-fi
-
 AC_SUBST(my_includes)
-AC_SUBST(EET_CFLAGS)
-AC_SUBST(EET_LIBS)
 
-AM_CONDITIONAL(BUILD_EET_LOADER, test x$eet != xno)
 AM_CONDITIONAL(BUILD_XCF_LOADER, test x$xcf != xno)
 
 AC_CONFIG_FILES([
@@ -144,12 +117,6 @@ AC_OUTPUT
 
 echo -e "\nBuild summary:"
 echo    "------------------------"
-echo -n " EET: "
-if test x$eet = xno ; then
-  echo    "Disabled "
-else
-  echo    "Enabled "
-fi
 echo -n " XCF: "
 if test x$xcf = xno ; then
   echo    "Disabled "

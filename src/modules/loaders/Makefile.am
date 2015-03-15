@@ -7,24 +7,14 @@ AM_CPPFLAGS          = -I. \
 
 pkgdir               = $(libdir)/imlib2/loaders
 
-if BUILD_EET_LOADER
-EET_L                = eet.la
-endif
 if BUILD_XCF_LOADER
 XCF_L                = xcf.la
 endif
 
 pkg_LTLIBRARIES      = \
-$(EET_L) \
 $(XCF_L) \
 ico.la \
 ani.la
-
-eet_la_SOURCES      = loader_eet.c common.h image.h
-eet_la_CPPFLAGS     = @EET_CFLAGS@ $(AM_CPPFLAGS)
-eet_la_LDFLAGS      = -module -avoid-version
-eet_la_LIBADD       = @EET_LIBS@
-eet_la_LIBTOOLFLAGS = --tag=disable-static
 
 xcf_la_SOURCES      = loader_xcf.c loader_xcf_pixelfuncs.c image.h common.h color_values.h
 xcf_la_LDFLAGS      = -module -avoid-version
