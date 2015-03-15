@@ -2,9 +2,8 @@ Imlib2_loaders @VERSION@
 
 Additional Image Loaders
 
-This package contains image loader plugins for Imlib 2 that are not dis-
-tributed together with the Imlib 2 package itself. More about Imlib 2
-can be found on http://www.rasterman.com/imlib.html.
+This package contains all image loader plugins for Imlib 2 .
+More about Imlib 2 can be found on http://www.rasterman.com/imlib.html.
 
 XCF loader:
 

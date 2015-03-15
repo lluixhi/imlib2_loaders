@@ -2,6 +2,10 @@
 *** Version 1.4.7 ***
 ***
 
+Lluixhi Scura:
+      Remove EET Loader.
+      Import all loaders from imlib2.
+
 Kim Woelders (3):
       Update autofoo (run autoupdate).
       Don't install .a files.
